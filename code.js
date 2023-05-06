@@ -49,8 +49,22 @@ function round(playerChoice, computerChoice){
         return "Você escolheu tesoura e o computador escolheu tesoura. Você empate."
     }
 }
+function erasePoints(){
+    playerPoints = 0;
+    computerPoints = 0;
+}
 function game(playerChoice,computerChoice){
+    scores.style.color = "black";
     scores.innerHTML = round(playerChoice,computerChoice);
+    if(playerPoints >= 5){
+        scores.style.color = "red";
+        scores.innerHTML = "Você ganhou!";
+        erasePoints();
+    }else if(computerPoints >= 5){
+        scores.style.color = "red";
+        scores.innerHTML = "O computador ganhou!";
+        erasePoints();
+    }
 }
 let body = document.querySelector("body");
 let scores = document.createElement("div");
