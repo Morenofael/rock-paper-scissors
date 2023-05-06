@@ -5,13 +5,16 @@ let computerPoints = 0;
 function getComputerChoice(){
     return Math.floor(Math.random()*3)+1;
 }
-function game(playerChoice, computerChoice){
-    playerChoice = prompt("Pick rock, paper, or scissor")
-    playerChoice = playerChoice.toUpperCase()
-    while(playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice != "SCISSOR"){
-        playerChoice = prompt("Incorrect typing. Try again.").toUpperCase()
-    }
+function round(playerChoice, computerChoice){
+    // playerChoice = prompt("Pick rock, paper, or scissor")
+    console.log(playerChoice);
+    playerChoice = playerChoice.toUpperCase();
+    console.log(playerChoice);
+    // while(playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice != "SCISSOR"){
+    //     playerChoice = prompt("Incorrect typing. Try again.").toUpperCase()
+    // }
     computerChoice = getComputerChoice();
+    console.log(computerChoice);
     if(playerChoice == "ROCK" && computerChoice == 1){
         return "Ambos jogaram pedra. Emptate";
     }
@@ -46,7 +49,9 @@ function game(playerChoice, computerChoice){
         return "Você escolheu tesoura e o computador escolheu tesoura. Você empate."
     }
 }
-    console.log(game(playerChoice,computerChoice));
-
-console.log("The computer scored "+computerPoints+" and you scored "+playerPoints)
-
+function game(playerChoice,computerChoice){
+    scores.innerHTML = round(playerChoice,computerChoice);
+}
+let body = document.querySelector("body");
+let scores = document.createElement("div");
+body.appendChild(scores);
